@@ -13,25 +13,9 @@ function gaussjordanmethod(PX, PY, PZ, dimension, outNodes, t, n, meshType)
     % Compute the coefficients for PX, PY and PZ when needed
     cx = computeCoefficients(PX, t, n);
     cy = computeCoefficients(PY, t, n);
-    if(dimension > 2)
-      cz = computeCoefficients(PZ, t, n);
-    endif
-
-
-    % Create an intervale based on the mesh type
-    intervalMin = 0;
-    intervalMax = t(n);
-
-    if(meshType == 2)
-      intervalMin = -1;
-    endif
-    if(meshType == 1 || meshType == 2)
-      int
-      ervalMax = 1;
-    endif
 
     % Create intermediate t values inside the interval
-    steps = linspace(intervalMin, intervalMax, outNodes);
+    steps = linspace(t(1), t(end), outNodes);
 
     % Compute x and y interpolated values inside the interval
     xResults = polyval(cx', steps);
@@ -39,6 +23,7 @@ function gaussjordanmethod(PX, PY, PZ, dimension, outNodes, t, n, meshType)
 
     % Compute z values only when needed
     if(dimension > 2)
+      cz = computeCoefficients(PZ, t, n);
       zResults = polyval(cz', steps);
       plot3(xResults, yResults, zResults, 'r');
       hold on;
