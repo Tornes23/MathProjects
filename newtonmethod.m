@@ -8,3 +8,6 @@
 %
 % Script input data for the first project
 %========================================================
+function newtonmethod(PX, PY, PZ, dimension, outNodes, t, n, meshtype)
+{
+}
