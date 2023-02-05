@@ -13,7 +13,7 @@ case 0
 case 1
    lagrangemethod(PX,PY,PZ,dimension,meshdigit,outputnodes)
 case 2
-  newtonmethod(PX,PY, PZ, dimension, outputnodes, t, columns(PX), meshdigit)
+  newtonmethod(t, PX, PY, PZ, outputnodes, dimension);
 endswitch
 
 
