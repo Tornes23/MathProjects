@@ -4,15 +4,16 @@ inputData
 
 #call to mesh making function
 
-t = meshcreation(meshdigit, columns(PX));
+n = columns(PX);
+t = meshcreation(meshdigit, n);
 
 switch (methoddigit)
 case 0
-  gaussjordanmethod(PX, PY, PZ, dimension, outputnodes,t, columns(PX), meshdigit);
+  gaussjordanmethod(PX, PY, PZ, dimension, outputnodes, t, n);
 case 1
    lagrangemethod(PX,PY,PZ,dimension,meshdigit,outputnodes)
 case 2
-  printf("Newton");
+  newtonmethod(t, PX, PY, PZ, outputnodes, dimension);
 endswitch
 
 

@@ -8,38 +8,21 @@
 %
 % Script input data for the first project
 %========================================================
-function gaussjordanmethod(PX, PY, PZ, dimension, outNodes, t, n, meshType)
+function gaussjordanmethod(PX, PY, PZ, dimension, outNodes, t, n)
 
     % Compute the coefficients for PX, PY and PZ when needed
-    cx = computeCoefficients(PX, t, n);
-    cy = computeCoefficients(PY, t, n);
-    if(dimension > 2)
-      cz = computeCoefficients(PZ, t, n);
-    endif
-
-
-    % Create an intervale based on the mesh type
-    intervalMin = 0;
-    intervalMax = t(n);
-
-    if(meshType == 2)
-      intervalMin = -1;
-    endif
-    if(meshType == 1 || meshType == 2)
-      int
-      ervalMax = 1;
-    endif
+    c = computeCoefficients(PX, PY, PZ, t, n, dimension);
 
     % Create intermediate t values inside the interval
-    steps = linspace(intervalMin, intervalMax, outNodes);
+    steps = linspace(t(1), t(end), outNodes);
 
     % Compute x and y interpolated values inside the interval
-    xResults = polyval(cx', steps);
-    yResults = polyval(cy', steps);
+    xResults = polyval(c(:,1)', steps);
+    yResults = polyval(c(:,2)', steps);
 
     % Compute z values only when needed
     if(dimension > 2)
-      zResults = polyval(cz', steps);
+      zResults = polyval(c(:,3)', steps);
       plot3(xResults, yResults, zResults, 'r');
       hold on;
       plot3(PX, PY, PZ, 'ok');
@@ -53,9 +36,9 @@ function gaussjordanmethod(PX, PY, PZ, dimension, outNodes, t, n, meshType)
 
   endfunction
 
-function c = computeCoefficients(P, t, n)
+function c = computeCoefficients(PX, PY, PZ, t, n, dimension)
 
-    matrix = zeros(n, n + 1);
+    matrix = zeros(n, n + dimension);
 
     % Fill the matrix with the given points
     for i = 1 : n
@@ -64,12 +47,23 @@ function c = computeCoefficients(P, t, n)
       endfor
     endfor
 
-    % Add the augmented matrix's colimn
-    matrix(:,n+1) = P';
+    % Add the augmented matrix's column
+    matrix(:,n+1) = PX';
+    matrix(:,n+2) = PY';
+
+    if(dimension > 2)
+      matrix(:,n+3) = PZ';
+    endif
 
     % Compute the result and extract it
     matrix = rref(matrix);
 
-    c = matrix(:,n+1);
+    c = zeros(n, dimension);
+    c(:,1) = matrix(:,n+1);
+    c(:,2) = matrix(:,n+2);
+
+    if(dimension > 2)
+      c(:,3) = matrix(:,n+3);
+    endif
 
 endfunction
