@@ -9,7 +9,7 @@ t = meshcreation(meshdigit, n);
 
 switch (methoddigit)
 case 0
-  gaussjordanmethod(PX, PY, PZ, dimension, outputnodes, t, n, meshdigit);
+  gaussjordanmethod(PX, PY, PZ, dimension, outputnodes, t, n);
 case 1
    lagrangemethod(PX,PY,PZ,dimension,meshdigit,outputnodes)
 case 2

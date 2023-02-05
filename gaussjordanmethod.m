@@ -8,7 +8,7 @@
 %
 % Script input data for the first project
 %========================================================
-function gaussjordanmethod(PX, PY, PZ, dimension, outNodes, t, n, meshType)
+function gaussjordanmethod(PX, PY, PZ, dimension, outNodes, t, n)
 
     % Compute the coefficients for PX, PY and PZ when needed
     cx = computeCoefficients(PX, t, n);
@@ -49,7 +49,7 @@ function c = computeCoefficients(P, t, n)
       endfor
     endfor
 
-    % Add the augmented matrix's colimn
+    % Add the augmented matrix's column
     matrix(:,n+1) = P';
 
     % Compute the result and extract it
