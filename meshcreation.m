@@ -14,5 +14,4 @@ function t = meshcreation(meshtype, nodes)
     else
         printf("Not a valid mesh type digit");
     endif
-    t
 endfunction
