@@ -32,10 +32,6 @@ mesh = meshcreation(_meshtype, points);
 plot(_Px, _Py, 'o')
 hold on;
 
-#initialize the values that are going to be plotted
-px;
-py;
-pz;
 
 #iterate thought each of the points of the mesh
 
@@ -49,7 +45,7 @@ for i = 1 : points
     if j!=i
       #compute each of the Lagrange polynomial terms: x-x_j/x_i-x_j for each of the x in our mesh
       c=poly(mesh(j))/(mesh(i)-mesh(j));
-      l=conv(c,l)
+      l=conv(c,l);
     endif
   endfor
   #add the x, y and z constrains to each of Lagrange polynomials and add the together to get the final value at each of the axis
@@ -65,8 +61,10 @@ py = finalValueY;
 if _dimension == 3
   pz = finalValueZ
 endif
-
-
+px
+py
+polyval(px,[0.7])
+polyval(py,[0.7])
 #plot the polynomial depending on the dimension
 if _dimension == 2
 plot(polyval(px,outnodes),polyval(py,outnodes));
