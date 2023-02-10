@@ -6,8 +6,8 @@ case 0
 case 1
   t = linspace(0, 1, nodes);
 case 2
-  for i=1:nodes
-    t(i) = -cos(pi * (i-1) / nodes);
+  for i=0:nodes
+    t(i + 1) = -cos((pi * i) / nodes);
   endfor
 endswitch
 

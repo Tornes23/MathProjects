@@ -9,32 +9,12 @@
 % Script input data for the first project
 %========================================================
 
-#function to evaluate the NewtonPolynomial
-function out = Evaluate(mesh, diferences, nodeVal, value, pointcount)
-    #the staring value for the output
-    out = value;
-    #making the sumatory of the computation
-    for i=2:pointcount
-        out += diferences(i - 1) * ComputePolynomial(i - 1, nodeVal, mesh);
-    endfor
-endfunction
-
-#function that computes the newton polynomial of the given degree
-function out = ComputePolynomial(degree, value, mesh)
-    #the staring value for the output
-    out = 1;
-    #accumulating the multiplications of the polynoimials to generate the wanted one
-    for i=1:degree
-        out *= value - mesh(i); 
-    endfor
-endfunction
-
 function newtonmethod(t, pointsX, pointsY, pointsZ, nodecount, dimensions)
     
     #variables for the computations
     pointcount = columns(pointsX);
-    diferencesY = divideddiferences(pointsY, nodecount, t);
-    diferencesX = divideddiferences(pointsX, nodecount, t);
+    diferencesX = divideddiferences(pointsX, t);
+    diferencesY = divideddiferences(pointsY, t);
     
     #output vectors for the plot
     outX = zeros(1, nodecount);
@@ -76,3 +56,22 @@ function newtonmethod(t, pointsX, pointsY, pointsZ, nodecount, dimensions)
 
 endfunction
 
+#function to evaluate the NewtonPolynomial
+function out = Evaluate(mesh, diferences, nodeVal, value, pointcount)
+    #the staring value for the output
+    out = value;
+    #making the sumatory of the computation
+    for i=2:pointcount
+        out += diferences(i - 1) * ComputePolynomial(i - 1, nodeVal, mesh);
+    endfor
+endfunction
+
+#function that computes the newton polynomial of the given degree
+function out = ComputePolynomial(degree, value, mesh)
+    #the staring value for the output
+    out = 1;
+    #accumulating the multiplications of the polynoimials to generate the wanted one
+    for i=1:degree
+        out *= value - mesh(i); 
+    endfor
+endfunction
