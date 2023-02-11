@@ -4,7 +4,7 @@
 % David Miranda  - m.david@digipen.edu
 % Daniel Herreros - d.herreros@digipen.edu
 % Nestor Uriarte - nestor.uriarte@digipen.edu
-% 02/05/2022
+% 02/05/2023
 %
 % Script input data for the first project
 %========================================================
@@ -41,6 +41,7 @@ function c = computeCoefficients(PX, PY, PZ, t, n, dimension)
     matrix = zeros(n, n + dimension);
 
     % Fill the matrix with the given points
+    % computing the rows and columns based on the slides
     for i = 1 : n
       for j = 1 : n
         matrix(i,j) = t(i)^(n-j);
