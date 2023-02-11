@@ -6,10 +6,10 @@
 % Nestor Uriarte - nestor.uriarte@digipen.edu
 % 02/05/2023
 %
-% Script input data for the first project
+% Implementation of the Lagrange interpolation method
+% for 2D and 3D.
 %========================================================
 function lagrangemethod(_Px, _Py, _Pz, _dimension, _nodenumber, t)
-%tic
 
 points = length(_Px);
 
@@ -56,13 +56,11 @@ endfor
 if _dimension == 2
 plot(_Px, _Py, 'ok');
 hold on;
-plot(px,py);
+plot(px,py, 'r');
 elseif _dimension == 3
 plot3(_Px, _Py, _Pz, 'ok');
 hold on;
-plot3(px,py,pz);
+plot3(px,py,pz, 'r');
 endif
 
-
-%toc
 endfunction

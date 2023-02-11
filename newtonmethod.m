@@ -6,7 +6,8 @@
 % Nestor Uriarte - nestor.uriarte@digipen.edu
 % 02/05/2023
 %
-% Implementation of Newton Method
+% Implementation of the Newton interpolation method
+% for 2D and 3D.
 %========================================================
 
 function newtonmethod(t, pointsX, pointsY, pointsZ, nodecount, dimensions)

@@ -6,9 +6,10 @@
 % Nestor Uriarte - nestor.uriarte@digipen.edu
 % 02/05/2023
 %
-% Script to create the mesh for the interpolation
+% Script to construct a mesh using three different methods.
+% Regular [0,n], Regular [0,1] and Chebysev [-1,1]
 %========================================================
-function t = meshcreation(meshtype, nodes)
+function t = meshselection(meshtype, nodes)
 
 switch (meshtype)
 case 0

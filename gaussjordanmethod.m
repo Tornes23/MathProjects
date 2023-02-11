@@ -6,21 +6,23 @@
 % Nestor Uriarte - nestor.uriarte@digipen.edu
 % 02/05/2023
 %
-% Script input data for the first project
+% Implementation of the Gauss-Jordan interpolation method
+% for 2D and 3D.
 %========================================================
 function gaussjordanmethod(PX, PY, PZ, dimension, outNodes, t, n)
 
-    % Compute the coefficients for PX, PY and PZ when needed
+    # Compute the coefficients for PX, PY and PZ when needed
     c = computeCoefficients(PX, PY, PZ, t, n, dimension);
 
-    % Create intermediate t values inside the interval
-    steps = linspace(t(1), t(end), outNodes);
+    pointcount = columns(PX);
+    # Create intermediate t values inside the interval
+    steps = linspace(t(1), t(pointcount), outNodes);
 
-    % Compute x and y interpolated values inside the interval
+    # Compute x and y interpolated values inside the interval
     xResults = polyval(c(:,1)', steps);
     yResults = polyval(c(:,2)', steps);
 
-    % Compute z values only when needed
+    # Compute z values only when needed
     if(dimension > 2)
       zResults = polyval(c(:,3)', steps);
       plot3(xResults, yResults, zResults, 'r');
@@ -40,15 +42,15 @@ function c = computeCoefficients(PX, PY, PZ, t, n, dimension)
 
     matrix = zeros(n, n + dimension);
 
-    % Fill the matrix with the given points
-    % computing the rows and columns based on the slides
+    # Fill the matrix with the given points
+    # computing the rows and columns based on the slides
     for i = 1 : n
       for j = 1 : n
         matrix(i,j) = t(i)^(n-j);
       endfor
     endfor
 
-    % Add the augmented matrix's column
+    # Add the augmented matrix's column
     matrix(:,n+1) = PX';
     matrix(:,n+2) = PY';
 
@@ -56,7 +58,7 @@ function c = computeCoefficients(PX, PY, PZ, t, n, dimension)
       matrix(:,n+3) = PZ';
     endif
 
-    % Compute the result and extract it
+    # Compute the result and extract it
     matrix = rref(matrix);
 
     c = zeros(n, dimension);
