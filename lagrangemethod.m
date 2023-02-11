@@ -9,7 +9,7 @@
 % Script input data for the first project
 %========================================================
 function lagrangemethod(_Px, _Py, _Pz, _dimension, _nodenumber, t)
-tic
+%tic
 
 points = length(_Px);
 
@@ -64,5 +64,5 @@ plot3(px,py,pz);
 endif
 
 
-toc
+%toc
 endfunction
