@@ -8,16 +8,14 @@
 %
 % Script input data for the first project
 %========================================================
-function lagrangemethod(_Px, _Py, _Pz, _dimension, _meshtype, _nodenumber)
-
+function lagrangemethod(_Px, _Py, _Pz, _dimension, _nodenumber, t)
+tic
 
 points = length(_Px);
 
-#create the mesh where the polynomial is going to be evaluated
-mesh = meshcreation(_meshtype, points);
-
+pointcount = columns(_Px);
 #create the mesh to evalute the Lagrange polynomials at
-outnodes = linspace(mesh(1), mesh(end), _nodenumber);
+outnodes = linspace(t(1), t(pointcount), _nodenumber);
 
 
 #initialize the values that are going to be plotted
@@ -36,7 +34,7 @@ for n = 1:_nodenumber
     for j = 1 : points
       if j!=i
         #compute each of the Lagrange polynomial terms: x-x_j/x_i-x_j for each of the x in our mesh
-        l*=((outnodes(n)-mesh(j))/(mesh(i)-mesh(j)));
+        l*=((outnodes(n)-t(j))/(t(i)-t(j)));
       endif
     endfor
     #add the x, y and z constrains to each of Lagrange polynomials and add the together to get the final value at each of the axis
@@ -65,4 +63,6 @@ hold on;
 plot3(px,py,pz);
 endif
 
+
+toc
 endfunction
