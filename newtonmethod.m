@@ -4,9 +4,9 @@
 % David Miranda  - m.david@digipen.edu
 % Daniel Herreros - d.herreros@digipen.edu
 % Nestor Uriarte - nestor.uriarte@digipen.edu
-% 02/05/2022
+% 02/05/2023
 %
-% Script input data for the first project
+% Implementation of Newton Method
 %========================================================
 
 function newtonmethod(t, pointsX, pointsY, pointsZ, nodecount, dimensions)
@@ -26,7 +26,7 @@ function newtonmethod(t, pointsX, pointsY, pointsZ, nodecount, dimensions)
     ending = t(pointcount);
     mesh = linspace(starting, ending, nodecount);
 
-    #ecaluating for 2D
+    #evaluating for 2D
     for i=1:nodecount
         outX(i) = Evaluate(t, diferencesX, mesh(i), pointsX(1), pointcount);
         outY(i) = Evaluate(t, diferencesY, mesh(i), pointsY(1), pointcount);
@@ -34,9 +34,9 @@ function newtonmethod(t, pointsX, pointsY, pointsZ, nodecount, dimensions)
 
     #if 3D ploting is needed evaluate for Z too
     if dimensions == 3
-        diferencesZ = divideddiferences(pointsZ, nodecount, t);
+        diferencesZ = divideddiferences(pointsZ, t);
         for i=1:nodecount
-            outZ = Evaluate(t, diferencesZ, mesh(i), pointsZ(1), pointcount);
+            outZ(i) = Evaluate(t, diferencesZ, mesh(i), pointsZ(1), pointcount);
         endfor
     endif
 
