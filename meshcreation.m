@@ -1,3 +1,13 @@
+%========================================================
+% MAT300 CURVES AND SURFACES
+% Digipen Bilbao
+% David Miranda  - m.david@digipen.edu
+% Daniel Herreros - d.herreros@digipen.edu
+% Nestor Uriarte - nestor.uriarte@digipen.edu
+% 02/05/2023
+%
+% Script to create the mesh for the interpolation
+%========================================================
 function t = meshcreation(meshtype, nodes)
 
 switch (meshtype)
