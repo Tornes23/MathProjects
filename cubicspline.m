@@ -74,5 +74,15 @@ function cubicspline
 
   % Create the input based on the node number
   m = linspace(0, n - 1, outputnodes);
-
+  outX = polyval(xCoef, m);
+  outY = polyval(yCoef, m);
+  
+  if(Dimension == 2)
+    plot(outX, outY, 'b');
+    hold on;
+  elseif(Dimension == 3)
+    outZ = polyval(zCoef, m);
+    plot3(outX, outY, outZ, 'b');
+  endif
+  
 endfunction
