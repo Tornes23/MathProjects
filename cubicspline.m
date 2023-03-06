@@ -85,8 +85,8 @@ function cubicspline
     outZ = zCoef(1) + zCoef(2) * m + zCoef(3) * m.^2 +  zCoef(4) * m.^3;
   endif
   
+  %the ratio that each segments will have
   sampleRatio = outputnodes / n;
-
   %Computing the values between [n, n + 1] on shifted basis
   %starting from the 4th coeficient because we already computed them previously
   for(i =  1: n - 2)
