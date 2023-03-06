@@ -73,16 +73,45 @@ function cubicspline
   endif
 
   % Create the input based on the node number
-  m = linspace(0, n - 1, outputnodes);
-  outX = polyval(xCoef, m);
-  outY = polyval(yCoef, m);
+  m = linspace(0, n, outputnodes);
+  %We need to subdivide the calculus of the points because the basis is 
+  %composed by a starndard basis in [0, 1] and then is constructed by
+  %a shifted basis
+  %Computing the values between [0, 1] on standard basis since all the
+  %shifted values will be 0
+  outX = xCoef(1) + xCoef(2) * m + xCoef(3) * m.^2 +  xCoef(4) * m.^3;
+  outY = yCoef(1) + yCoef(2) * m + yCoef(3) * m.^2 +  yCoef(4) * m.^3;
+  if(Dimension == 3)
+    outZ = zCoef(1) + zCoef(2) * m + zCoef(3) * m.^2 +  zCoef(4) * m.^3;
+  endif
   
+  sampleRatio = outputnodes / n;
+
+  %Computing the values between [n, n + 1] on shifted basis
+  %starting from the 4th coeficient because we already computed them previously
+  for(i =  1: n - 2)
+    %computing the firsts point index inside the vector
+    point = floor(sampleRatio * i);
+    % the correspondin coefficient multiplied by each shifted value
+    % by using the (n : m) index accesing we are getting a vector with the values
+    outX(point : end) .+= xCoef(4 + i) .* (m(point : end) - i).^3;
+    outY(point : end) .+= yCoef(4 + i) .* (m(point : end) - i).^3;
+    if(Dimension ==3)
+      outZ(point : end) .+= zCoef(4 + i) .* (m(point : end) - i).^3;
+    endif
+
+  endfor
+
   if(Dimension == 2)
     plot(outX, outY, 'b');
     hold on;
+    plot(PX, PY, 'ro');
+    hold on;
   elseif(Dimension == 3)
-    outZ = polyval(zCoef, m);
     plot3(outX, outY, outZ, 'b');
+    hold on;
+    plot3(PX, PY, PZ,'ro');
+    hold on;
   endif
   
 endfunction
