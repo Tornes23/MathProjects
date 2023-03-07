@@ -6,18 +6,12 @@
 % Nestor Uriarte - nestor.uriarte@digipen.edu
 % 03/07/2023
 %
-% First project of the course. Interpolant polynomials.
+% Second project of the course. Cubic Splines.
 %========================================================
 
 Included files:
-	- inputData.m: The input data for the problem can be modified here.
-	- meshselection.m: Mesh creation program.
-	- interpolation.m: The interpolation method set up will be called from here.
-	- gaussjordanmethod.m: Gauss-Jordan interpolation method.
-	- lagrangemethod.m: Lagrange interpolation method.
-	- newtonmethod.m: Newton interpolation method.
-	- divideddifferences.m: Computation of the divided differences.
+	- input.m: The input data for the problem can be modified here.
+	- cubicspline.m: Solves the cubic spline interpolation problem.
 
-
-The program can be executed by writting interpolation on the command window.
-Before that, the input data can be modified in inputData.m
+The program can be executed by writting cubicsplineon the command window.
+Before that, the input data can be modified in input.m
