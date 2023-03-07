@@ -73,7 +73,7 @@ function cubicspline
   endif
 
   % Create the input based on the node number
-  m = linspace(0, n, outputnodes);
+  m = linspace(0, n - 1, outputnodes);
   %We need to subdivide the calculus of the points because the basis is 
   %composed by a starndard basis in [0, 1] and then is constructed by
   %a shifted basis
@@ -86,7 +86,7 @@ function cubicspline
   endif
   
   %the ratio that each segments will have
-  sampleRatio = outputnodes / n;
+  sampleRatio = outputnodes / (n - 1);
   %Computing the values between [n, n + 1] on shifted basis
   %starting from the 4th coeficient because we already computed them previously
   for(i =  1: n - 2)
@@ -105,13 +105,19 @@ function cubicspline
   if(Dimension == 2)
     plot(outX, outY, 'b');
     hold on;
+    grid on;
     plot(PX, PY, 'ro');
     hold on;
   elseif(Dimension == 3)
     plot3(outX, outY, outZ, 'b');
     hold on;
+    grid on;
     plot3(PX, PY, PZ,'ro');
     hold on;
+    zlabel('z-axis');
   endif
+    xlabel('x-axis');
+    ylabel('y-axis');
+    title('MAT300 Project 2 Cubic Spline');
   
 endfunction
