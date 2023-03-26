@@ -10,9 +10,9 @@
 %========================================================
 
 function beziercurve()
+
   input
 
-  
 switch (methoddigit)
 case 0
   directevaluation(PX, PY, PZ, dimension, outputnodes);
@@ -22,5 +22,5 @@ case 2
   midsubdivision(PX, PY, PZ, dimension, midterations);
 endswitch
 
-  
+
 endfunction

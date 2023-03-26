@@ -13,7 +13,7 @@ PX = [1 2 3 1 0]; % x-coordinate interpolation points
 PY = [-1 -2 6 8 5]; % y-coordinate interpolation points
 PZ = [2 1 -1 4 2]; % z-coordinate interpolation points
 
-Dimension = 2; % dimension 2 or 3 (consistent with PZ)
+dimension = 3; % dimension 2 or 3 (consistent with PZ)
 
 methoddigit = 1;% 0 -direct evaluation 1-DeCasteljau 2-Midpoint
 
