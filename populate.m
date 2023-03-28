@@ -1,20 +1,18 @@
 function points = populate(cp0, cp1, currIt, maxIT)
-
-  points = [];
   
+  points = [];
   if(currIt > maxIT) return; endif
-
   mid = computeMidPoint(cp0, cp1);
-
-  %populate(cp0, mid, currIt + 1, maxIT);
-  points = populate(cp0, mid, currIt + 1, maxIT);
+  
+  left = populate(cp0, mid, currIt + 1, maxIT);
+  
+  points = left;
 
   points(end + 1) = mid;
 
-  %populate(mid, cp1, currIt + 1, maxIT);
-  result = populate(mid, cp1, currIt + 1, maxIT);
+  right = populate(mid, cp1, currIt + 1, maxIT);
 
-  points = [points result];
+  points = [points right]
 
 endfunction
 

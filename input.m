@@ -9,8 +9,8 @@
 % Script input data for the third project
 %========================================================
 
-PX = [1 2 3 1 0]; % x-coordinate interpolation points
-PY = [-1 -2 6 8 5]; % y-coordinate interpolation points
+PX = [1 2 3 1]; % x-coordinate interpolation points
+PY = [-1 -2 6 8]; % y-coordinate interpolation points
 PZ = [2 1 -1 4 2]; % z-coordinate interpolation points
 
 dimension = 2; % dimension 2 or 3 (consistent with PZ)
@@ -21,6 +21,6 @@ outputnodes = 60; % number of nodes for the output mesh if methoddigit=0,1
 
 shellindex = 20; % node for which compute digits if methoddigit=1
 
-midterations = 6; % number of iterations if methoddigit=2
+midterations = 2; % number of iterations if methoddigit=2
 
 

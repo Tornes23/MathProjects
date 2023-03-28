@@ -17,7 +17,9 @@ function midsubdivision( PX, PY, PZ, dimension, iterations)
   endfor
 
   X(end + 1) = PX(end);
+  X
   Y(end + 1) = PY(end);
+  Y
   
   if(dimension == 3)
     Z(end + 1) = PZ(end);
