@@ -12,15 +12,15 @@
 function beziercurve()
   input
 
-  
+
 switch (methoddigit)
 case 0
-  directevaluation(PX, PY, PZ, dimension, outputnodes);
+  directevaluation(PX, PY, PZ, Dimension, outputnodes);
 case 1
-  decasteljau(PX, PY, PZ, dimension, outputnodes, shellindex)
+  decasteljau(PX, PY, PZ, Dimension, outputnodes, shellindex)
 case 2
-  midsubdivision(PX, PY, PZ, dimension, midterations);
+  midsubdivision(PX, PY, PZ, Dimension, midterations);
 endswitch
 
-  
+
 endfunction
