@@ -15,7 +15,7 @@ PZ = [2 1 -1 4 2]; % z-coordinate interpolation points
 
 dimension = 3; % dimension 2 or 3 (consistent with PZ)
 
-methoddigit = 1;% 0 -direct evaluation 1-DeCasteljau 2-Midpoint
+methoddigit = 0;% 0 -direct evaluation 1-DeCasteljau 2-Midpoint
 
 outputnodes = 60; % number of nodes for the output mesh if methoddigit=0,1
 
