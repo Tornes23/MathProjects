@@ -1,5 +1,16 @@
+%========================================================
+% MAT300 CURVES AND SURFACES
+% Digipen Bilbao
+% David Miranda  - m.david@digipen.edu
+% Daniel Herreros - d.herreros@digipen.edu
+% Nestor Uriarte - nestor.uriarte@digipen.edu
+% 04/02/2023
+%
+% Script that executes the midpoint subdivion algorithm
+%========================================================
 function midsubdivision(PX, PY, PZ, dimension, iterations)
 
+  %getting the number of control points
   n = columns(PX);
   % Start the method by inputing the given control points
   X = [PX(1)];
@@ -7,18 +18,16 @@ function midsubdivision(PX, PY, PZ, dimension, iterations)
   if(dimension == 3)
     Z = [PZ(1)];
   endif
-  
+  %populating the array with the points on the curve
   X = [X populate(PX, 1, iterations)];
   Y = [Y populate(PY, 1, iterations)];
   if(dimension == 3)
     Z = [Z populate(PZ, 1, iterations)];
   endif  
 
+  %appenging the last control point to the curve
   X(end + 1) = PX(end);
-  X
   Y(end + 1) = PY(end);
-  Y
-  
   if(dimension == 3)
     Z(end + 1) = PZ(end);
   endif
@@ -35,7 +44,7 @@ function midsubdivision(PX, PY, PZ, dimension, iterations)
     title('Midpoint Subdivision');
 
   endif
-  
+  %3D plot
   if(dimension == 3)
     % Plot the interpolated curve.
     plot3(X, Y, Z, 'r');
@@ -45,7 +54,4 @@ function midsubdivision(PX, PY, PZ, dimension, iterations)
     hold on;
     title('Midpoint Subdivision');
   endif
-
-
-
 endfunction
