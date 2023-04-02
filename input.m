@@ -21,6 +21,6 @@ outputnodes = 60; % number of nodes for the output mesh if methoddigit=0,1
 
 shellindex = 20; % node for which compute digits if methoddigit=1
 
-midterations = 2; % number of iterations if methoddigit=2
+midterations = 6; % number of iterations if methoddigit=2
 
 

@@ -1,4 +1,4 @@
-function midsubdivision( PX, PY, PZ, dimension, iterations)
+function midsubdivision(PX, PY, PZ, dimension, iterations)
 
   n = columns(PX);
   % Start the method by inputing the given control points
@@ -8,13 +8,11 @@ function midsubdivision( PX, PY, PZ, dimension, iterations)
     Z = [PZ(1)];
   endif
   
-  for i=1 : n - 1
-    X = [X populate(PX(i), PX(i + 1), 1, iterations)];
-    Y = [Y populate(PY(i), PY(i + 1), 1, iterations)];
-    if(dimension == 3)
-      Z = [Z populate(PZ(i), PZ(i + 1), 1, iterations)];
-    endif  
-  endfor
+  X = [X populate(PX, 1, iterations)];
+  Y = [Y populate(PY, 1, iterations)];
+  if(dimension == 3)
+    Z = [Z populate(PZ, 1, iterations)];
+  endif  
 
   X(end + 1) = PX(end);
   X

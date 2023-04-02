@@ -1,23 +1,38 @@
-function points = populate(cp0, cp1, currIt, maxIT)
+function points = populate(controlPoints, currIt, maxIT)
   
   points = [];
   if(currIt > maxIT) return; endif
-  mid = computeMidPoint(cp0, cp1);
+  [leftDiv, rightDiv] = computeMidPoint(controlPoints);
   
-  left = populate(cp0, mid, currIt + 1, maxIT);
+  leftLoop = populate(leftDiv, currIt + 1, maxIT);
   
-  points = left;
+  points = leftLoop;
+  points(end + 1) = leftDiv(end);
 
-  points(end + 1) = mid;
-
-  right = populate(mid, cp1, currIt + 1, maxIT);
-
-  points = [points right]
+  rightLoop = populate(rightDiv, currIt + 1, maxIT);
+  points = [points rightLoop]
 
 endfunction
 
-function mid = computeMidPoint(cp0, cp1)
+function [leftDiv, rightDiv] = computeMidPoint(controlPoints)
 
-  mid = (1/2) * cp1 + (1/2) * cp0;
+  pointcount = columns(controlPoints);
+  midpoints = zeros(pointcount);
+  #setting the first column
+  midpoints(:, 1) = controlPoints;
+  
+  prev_values = pointcount;
+
+  for i=2:pointcount
+    count = 0;
+    for j=i:pointcount
+        midpoints(j, i) = (0.5 * midpoints(j, i - 1)) +  (0.5 * midpoints(j - 1, i - 1));
+        count++;
+    endfor
+    prev_values = count;
+  endfor
+
+  leftDiv = transpose(diag(midpoints));
+  rightDiv = flip(midpoints(pointcount, :));
 
 endfunction
