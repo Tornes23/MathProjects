@@ -23,14 +23,29 @@ function midsubdivision(PX, PY, PZ, dimension, iterations)
     Z(end + 1) = PZ(end);
   endif
 
-  title('Midpoint Subdivision');
 
   % 2D plot
-  % Plot the interpolated curve.
-  plot(X, Y, 'r');
-  hold on;
-  % Plot the original control points
-  plot(PX, PY, 'ob');
-  hold on;
+  if(dimension == 2)
+    % Plot the interpolated curve.
+    plot(X, Y, 'r');
+    hold on;
+    % Plot the original control points
+    plot(PX, PY, 'ob');
+    hold on;
+    title('Midpoint Subdivision');
+
+  endif
+  
+  if(dimension == 3)
+    % Plot the interpolated curve.
+    plot3(X, Y, Z, 'r');
+    hold on;
+    % Plot the original control points
+    plot3(PX, PY, PZ, 'ob');
+    hold on;
+    title('Midpoint Subdivision');
+  endif
+
+
 
 endfunction

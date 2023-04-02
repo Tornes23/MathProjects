@@ -10,7 +10,7 @@ function points = populate(controlPoints, currIt, maxIT)
   points(end + 1) = leftDiv(end);
 
   rightLoop = populate(rightDiv, currIt + 1, maxIT);
-  points = [points rightLoop]
+  points = [points rightLoop];
 
 endfunction
 
