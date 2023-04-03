@@ -24,7 +24,8 @@ function decasteljau( PX, PY, PZ, dimension, outputnodes, shellindex)
         if(dimension == 3)
           Z(k, j + 1) = t(i) * Z(k + 1, j) + (1 - t(i)) * Z(k, j);
         endif
-
+        X
+        Y
         % Check that we are in the last iteration of the method
         % which is the actual point from the curve and store it
         % in the final curve.
@@ -62,13 +63,15 @@ function decasteljau( PX, PY, PZ, dimension, outputnodes, shellindex)
     % Plot the original control points
     plot(PX, PY, 'ob');
 
-    % If we had stored control points for any shell, plot it
-    for i = 1 : length(controlPointsX)
-      for j = 1 : length(controlPointsX) - i
-        % Plot the control points of the shell connecting them with line segments
-        plot([controlPointsX(i, j) controlPointsX(i + 1, j)] , [controlPointsY(i, j) controlPointsY(i + 1, j)], 'b');
+    if(exist("controlPointsX") == 1)
+      % If we had stored control points for any shell, plot it
+      for i = 1 : length(controlPointsX)
+        for j = 1 : length(controlPointsX) - i
+          % Plot the control points of the shell connecting them with line segments
+          plot([controlPointsX(i, j) controlPointsX(i + 1, j)] , [controlPointsY(i, j) controlPointsY(i + 1, j)], 'b');
+        endfor
       endfor
-    endfor
+    endif
   % 3D plot
   elseif(dimension == 3)
 
@@ -78,14 +81,16 @@ function decasteljau( PX, PY, PZ, dimension, outputnodes, shellindex)
     % Plot the original control points
     plot3(PX, PY, PZ, 'ob');
 
-    % If we had stored control points for any shell, plot it
-    for i = 1 : length(controlPointsX)
-      for j = 1 : length(controlPointsX) - i
-        % Plot the control points of the shell connecting them with line segments
-        plot3([controlPointsX(i, j) controlPointsX(i + 1, j)] , [controlPointsY(i, j) controlPointsY(i + 1, j)],
-              [controlPointsZ(i, j) controlPointsZ(i + 1, j)], 'b');
+    if(exist("controlPointsX") == 1)
+      % If we had stored control points for any shell, plot it
+      for i = 1 : length(controlPointsX)
+        for j = 1 : length(controlPointsX) - i
+          % Plot the control points of the shell connecting them with line segments
+          plot3([controlPointsX(i, j) controlPointsX(i + 1, j)] , [controlPointsY(i, j) controlPointsY(i + 1, j)],
+                [controlPointsZ(i, j) controlPointsZ(i + 1, j)], 'b');
+        endfor
       endfor
-    endfor
+    endif
   endif
 
 endfunction
