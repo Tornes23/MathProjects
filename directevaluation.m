@@ -1,3 +1,13 @@
+%========================================================
+% MAT300 CURVES AND SURFACES
+% Digipen Bilbao
+% David Miranda  - m.david@digipen.edu
+% Daniel Herreros - d.herreros@digipen.edu
+% Nestor Uriarte - nestor.uriarte@digipen.edu
+% 04/02/2023
+%
+% Script that executes the Direct Evaluation algorithm
+%========================================================
 function directevaluation(_PX, _PY, _PZ, _dimension, _outputnodes)
 
   t = linspace(0,1,_outputnodes);
@@ -20,11 +30,24 @@ function directevaluation(_PX, _PY, _PZ, _dimension, _outputnodes)
     endif
   endfor
 
+  title('Direct Evaluation');
   hold on;
   if(_dimension == 3)
+
+    view(45, 45);
+    grid on;
+    xlabel('X');
+    ylabel('Y');
+    zlabel('Z');
+
     plot3(_PX,_PY,_PZ);
     plot3(yx,yy,yz);
   else
+
+    grid on;
+    xlabel('X');
+    ylabel('Y');
+
     plot(_PX,_PY);
     plot(yx,yy);
   endif

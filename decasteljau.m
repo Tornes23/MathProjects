@@ -1,3 +1,13 @@
+%========================================================
+% MAT300 CURVES AND SURFACES
+% Digipen Bilbao
+% David Miranda  - m.david@digipen.edu
+% Daniel Herreros - d.herreros@digipen.edu
+% Nestor Uriarte - nestor.uriarte@digipen.edu
+% 04/02/2023
+%
+% Script that executes the De Casteljau algorithm
+%========================================================
 function decasteljau( PX, PY, PZ, dimension, outputnodes, shellindex)
 
   n = columns(PX);
@@ -24,8 +34,6 @@ function decasteljau( PX, PY, PZ, dimension, outputnodes, shellindex)
         if(dimension == 3)
           Z(k, j + 1) = t(i) * Z(k + 1, j) + (1 - t(i)) * Z(k, j);
         endif
-        X
-        Y
         % Check that we are in the last iteration of the method
         % which is the actual point from the curve and store it
         % in the final curve.
@@ -57,6 +65,10 @@ function decasteljau( PX, PY, PZ, dimension, outputnodes, shellindex)
   % 2D plot
   if(dimension == 2)
 
+    grid on;
+    xlabel('X');
+    ylabel('Y');
+
     % Plot the interpolated curve.
     plot(curveX, curveY, 'r');
 
@@ -74,6 +86,12 @@ function decasteljau( PX, PY, PZ, dimension, outputnodes, shellindex)
     endif
   % 3D plot
   elseif(dimension == 3)
+
+    view(45, 45);
+    grid on;
+    xlabel('X');
+    ylabel('Y');
+    zlabel('Z');
 
     % Plot the interpolated curve.
     plot3(curveX, curveY, curveZ, 'r');
